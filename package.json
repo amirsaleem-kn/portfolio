@@ -1,0 +1,36 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Amir Saleem's Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirsaleem-kn/portfolio.git"
+  },
+  "keywords": [
+    "Portfolio",
+    "software",
+    "developer",
+    "web",
+    "developer",
+    "app",
+    "developer",
+    "engineer",
+    "node",
+    "js",
+    "reactjs",
+    "python"
+  ],
+  "author": "Amir Saleem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amirsaleem-kn/portfolio/issues"
+  },
+  "homepage": "https://github.com/amirsaleem-kn/portfolio#readme",
+  "dependencies": {
+    "npm": "^6.3.0"
+  }
+}
