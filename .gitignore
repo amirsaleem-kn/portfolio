@@ -1,1 +1,7 @@
 node_modules
+package-lock.json
+test.sql
+variables.json
+variables.debug.json
+build
+bundle.js
