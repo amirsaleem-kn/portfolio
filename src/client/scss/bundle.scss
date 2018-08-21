@@ -1,16 +1,8 @@
-* {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-html,
 body {
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
 
-body {
-    h1 {
-        text-align: right;
-    }
+.underline {
+    border-bottom: 1px aolid #ccc;
 }

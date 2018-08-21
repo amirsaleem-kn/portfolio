@@ -10,6 +10,7 @@ var compiler = webpack(webpackConfig);
 app.use(webpackDevMiddleware(compiler, { publicPath: webpackConfig.output.publicPath }));
 app.use(webpackHotMiddleware(compiler, {
     path: '/__webpack_hmr',
+    publicPath: 'http://localhost:8080/',
     heartbeat: 10 * 1000
 }));
 
@@ -26,5 +27,5 @@ app.get('*', (req, res) => {
 var port = process.env.port || 8080;
 
 app.listen(port, () => {
-    console.log('listening to port: '+ port);
+    console.log(`listening to port: ${port}`);
 });
