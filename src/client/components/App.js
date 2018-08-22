@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Orders from './Orders/Order';
+import Loadable from 'react-loadable';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+const Loader = () => <div>Loading...</div>;
+
+const Orders = Loadable({
+    loader: () => import('./Orders/Order'),
+    loading: Loader
+});
 
 var App = () => {
     return (
-    <div>
-        <Orders/>
-    </div>
-    )
+    <Router>
+        <Switch>
+            <Route exact path = '/' component = { Orders }/>
+        </Switch>
+    </Router>
+    );
 }
 
 export default App;
