@@ -17,15 +17,13 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const plugins = [
     new webpack.DefinePlugin({ SOCKET_URL: JSON.stringify(process.env.SOCKET_URL ? process.env.SOCKET_URL : 'wss://localhost:8080') }),
     new webpack.HotModuleReplacementPlugin({ multiStep: true }),
-    new HtmlWebpackPlugin({ template: "views/index.html", filename: 'index.html', inject: true, title: "My Own Title from Webpack" }),
-    new ScriptExtHtmlWebpackPlugin({ inline: 'bundle', preload: /\.js$/ }),
     new MiniCssExtractPlugin( {filename: "[name].css", chunkFilename: "[id].css" })
 ];
 
 // file rules
 
 const jsRule =  {   
-    test: /\.js$/,
+    test: /.jsx?$/,
     exclude: /node_modules/,
     use: [{ loader: 'babel-loader', query: { presets: ['react', 'es2015', 'stage-1'] } }]
 };
@@ -46,10 +44,10 @@ const scssRule = {
 
 module.exports = {
     entry: [ 'webpack-hot-middleware/client?path=http://localhost:8080/__webpack_hmr&timeout=20000', './src/client/bundle.js' ],
-    output: { path: `${__dirname}'/dist/client'`, publicPath: '/', filename: 'bundle.js' },
+    output: { path: `${__dirname}'/dist/client'`, publicPath: '/', filename: './dist/client/bundle.js' },
     watch: true,
     devtool: "source-map",
-    module: { rules: [ jsRule, htmlRule, scssRule ] },
+    module: { rules: [ jsRule, scssRule ] },
     plugins: plugins,
     mode: 'development'
 }

@@ -8,11 +8,7 @@ var webpackConfig = require('./webpack.config.js');
 var compiler = webpack(webpackConfig);
 
 app.use(webpackDevMiddleware(compiler, { publicPath: webpackConfig.output.publicPath }));
-app.use(webpackHotMiddleware(compiler, {
-    path: '/__webpack_hmr',
-    publicPath: 'http://localhost:8080/',
-    heartbeat: 10 * 1000
-}));
+app.use(webpackHotMiddleware(compiler, { path: '/__webpack_hmr', publicPath: 'http://localhost:8080/', heartbeat: 10 * 1000 }));
 
 app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');

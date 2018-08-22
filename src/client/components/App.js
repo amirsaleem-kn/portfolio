@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './Header';
-import { hot } from 'react-hot-loader';
+import Orders from './Orders/Order';
 
 var App = () => {
     return (
     <div>
-        <Header />
+        <Orders/>
     </div>
     )
 }
