@@ -37,7 +37,10 @@ const htmlRule = {
 const scssRule = {
     test: /\.scss$/,
     exclude: /node_modules/,
-    use: [ MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader" ],
+    use: [ 
+        MiniCssExtractPlugin.loader, 
+        "css-loader", 
+        "postcss-loader", "sass-loader" ],
 };
 
 // main config object

@@ -1,13 +1,19 @@
 
 var mysql = require('mysql');
 var fs = require('fs');
+
+// Establish a secure connection with MySQL server
+
 function connectionPool (config) {
 
+    var pool;
+
     var credentials = config.database.credentials;
+
     var ssl = {
-        ca: fs.readFileSync("./mysql/ssl/cleardb-ca.pem"),
-        key: fs.readFileSync("./mysql/ssl/b9082f69ccfec3-key.pem"),
-        cert: fs.readFileSync("./mysql/ssl/b9082f69ccfec3-cert.pem")
+        ca: fs.readFileSync("./src/server/mysql/ssl/cleardb-ca.pem"),
+        key: fs.readFileSync("./src/server/mysql/ssl/b9082f69ccfec3-key.pem"),
+        cert: fs.readFileSync("./src/server/mysql/ssl/b9082f69ccfec3-cert.pem")
     }
 
     var poolConfig = {
@@ -20,9 +26,11 @@ function connectionPool (config) {
         debug: false,
         connectionTimeout: 120000,
         timeout: 120000
-    }
+    };
 
-    return mysql.createPool(poolConfig);
+    pool = mysql.createPool(poolConfig);
+
+    return pool;
 }
 
 module.exports = connectionPool;

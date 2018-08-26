@@ -1,0 +1,32 @@
+
+// mixin for transition
+
+@mixin easing($transition_element_name: all, $transition_duration: 0.4s, $transition_quadtrant: ease, $transition_delay: 0s) {
+    -webkit-transition: $transition_element_name $transition_duration $transition_quadtrant $transition_delay;
+    -moz-transition: $transition_element_name $transition_duration $transition_quadtrant $transition_delay;
+    -o-transition: $transition_element_name $transition_duration $transition_quadtrant $transition_delay;
+    transition: $transition_element_name $transition_duration $transition_quadtrant $transition_delay;
+}
+
+// mixins for box shadow
+
+@mixin material_shadow__very_low() {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+@mixin material_shadow__low() {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+@mixin material_shadow__medium() {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+@mixin material_shadow__high() {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+} 
+
+@mixin material_shadow__very_high() {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+

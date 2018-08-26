@@ -1,0 +1,7 @@
+@import 'mixins';
+
+.material-card {
+    padding: 20px;
+    background: #fff;
+    @include material_shadow__low();    
+}

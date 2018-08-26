@@ -19,10 +19,32 @@ class Orders extends Component {
     render() {
         return (
             <ErrorBoundary>
+                <div className = 'L-four clearfix'>
+                    <div className = 'material-card'>Some Text</div>
+                </div>
+                <div className = 'L-eight clearfix'>
+                    <div className = 'material-card'>Some Text</div>
+                </div>
+                <div className = 'L-three clearfix'>
+                    <div className = 'material-card'>Some Text</div>
+                </div>
+                <div className = 'L-three clearfix'>
+                    <div className = 'material-card'>Some Text</div>
+                </div>
+                <div className = 'L-three clearfix'>
+                    <div className = 'material-card'>Some Text</div>
+                </div>
+                <div className = 'L-three clearfix'>
+                    <div className = 'material-card'>Some Text</div>
+                </div>
                 {this.renderOrders()}
             </ErrorBoundary>
         );
     }
+}
+
+Orders.propTypes = {
+    orders: PropTypes.array
 }
 
 export default Orders;

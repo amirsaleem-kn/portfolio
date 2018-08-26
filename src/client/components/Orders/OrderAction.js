@@ -2,7 +2,10 @@ import axios from 'axios';
 import { FETCH_ORDERS } from '../../actions/types';
 
 export function fetchOrders ( next ) {
-    const orders = axios.get(`${localIP}:3000/fetch/active-orders`);
+    let orders = axios.get(`/fetch/active-orders`);
+    if(!orders.isArray) {
+       orders = []; 
+    }
     return({
         type: FETCH_ORDERS,
         payload: orders

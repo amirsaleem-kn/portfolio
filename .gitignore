@@ -11,3 +11,4 @@ config.debug.js
 config.js
 localIP.js
 mysql/ssl/*
+test.sql
