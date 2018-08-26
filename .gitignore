@@ -5,3 +5,9 @@ variables.json
 variables.debug.json
 build
 bundle.js
+/dist/client/*
+/dist/server/*
+config.debug.js
+config.js
+localIP.js
+mysql/ssl/*
