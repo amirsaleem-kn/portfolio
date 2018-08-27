@@ -1,7 +1,19 @@
 @import 'mixins';
+@import 'theme';
 
 .material-card {
-    padding: 20px;
-    background: #fff;
-    @include material_shadow__low();    
+    padding: 15px;
+    background: $light;
+    color: $gray_7;
+    @include material_shadow__low();
+    @include easing();
+    animation: fade-in 0.4s 1 0s;    
+    &:hover {
+        @include material_shadow__medium();
+    }
+}
+
+@keyframes fade-in {
+    from {top: -1000px};
+    to {top: 0}
 }

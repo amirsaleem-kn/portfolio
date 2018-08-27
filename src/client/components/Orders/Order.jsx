@@ -19,22 +19,22 @@ class Orders extends Component {
     render() {
         return (
             <ErrorBoundary>
-                <div className = 'L-four clearfix'>
+                <div className = 'L-four S-tewelve clearfix'>
+                    <div className = 'material-card text text--sub'>Some Text</div>
+                </div>
+                <div className = 'L-eight S-tewelve clearfix'>
                     <div className = 'material-card'>Some Text</div>
                 </div>
-                <div className = 'L-eight clearfix'>
+                <div className = 'L-three M-six S-tewelve clearfix'>
                     <div className = 'material-card'>Some Text</div>
                 </div>
-                <div className = 'L-three clearfix'>
+                <div className = 'L-three M-six S-tewelve clearfix'>
                     <div className = 'material-card'>Some Text</div>
                 </div>
-                <div className = 'L-three clearfix'>
+                <div className = 'L-three M-six S-tewelve clearfix'>
                     <div className = 'material-card'>Some Text</div>
                 </div>
-                <div className = 'L-three clearfix'>
-                    <div className = 'material-card'>Some Text</div>
-                </div>
-                <div className = 'L-three clearfix'>
+                <div className = 'L-three M-six S-tewelve clearfix'>
                     <div className = 'material-card'>Some Text</div>
                 </div>
                 {this.renderOrders()}

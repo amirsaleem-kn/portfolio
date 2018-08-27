@@ -1,0 +1,27 @@
+
+// typography
+
+$dark: rgba(0,0,0,1);
+$light: rgba(255,255,255,1);
+
+$gray_0: rgba(0,0,0,0.1);
+$gray_2: rgba(0,0,0,0.2);
+$gray_3: rgba(0,0,0,0.3);
+$gray_4: rgba(0,0,0,0.4);
+$gray_5: rgba(0,0,0,0.5);
+$gray_6: rgba(0,0,0,0.6);
+$gray_7: rgba(0,0,0,0.7);
+$gray_8: rgba(0,0,0,0.8);
+$gray_9: rgba(0,0,0,0.9);
+
+.text {
+    -webkit-font-smoothing: antialiased;
+}
+
+.text--primary {
+    color: $gray_9;
+}
+
+.text--sub {
+    color: $gray_7;
+}
