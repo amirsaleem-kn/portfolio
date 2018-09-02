@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ErrorBoundary from '../ErrorBoundary.jsx';
 import PropTypes from 'prop-types';
+import OrderCard from './OrderCard.jsx';
 
 const gridMap = [ 'zero','one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'tewelve' ];
 
@@ -42,11 +43,7 @@ class Orders extends Component {
             <div>
             {
                 orders.data.map(function( order, index ){
-                    return(
-                        <div className = {`L-${gridMap[order.grid]} S-tewelve clearfix`} key = { order.orderID }>
-                            <div className = 'material-card text text--sub'>{ order.name }</div>
-                        </div>
-                    )
+                    return <OrderCard grid = { gridMap[order.grid] } orderName = {order.name} key = {order.orderID}/>
                 })
             }
             </div>
@@ -56,17 +53,9 @@ class Orders extends Component {
     render() {
         let { orders } = this.props;
         if(orders.data.length == 0 && !orders.fetched) {
-            return(
-                <div className = {`L-tewelve S-tewelve clearfix`} key = { 12 }>
-                    <div className = 'material-card text text--sub'>Loading list of orders</div>
-                </div> 
-            )
+            return <OrderCard grid = 'tewelve' orderName = 'Loading list of orders..'/>
         } else if(orders.data.length == 0 && orders.fetched) {
-            return(
-                <div className = {`L-tewelve S-tewelve clearfix`} key = { 12 }>
-                    <div className = 'material-card text text--sub'>oops, looks like kitchen is empty today :(</div>
-                </div>
-            )
+            return <OrderCard grid = 'tewelve' orderName = 'oops, looks like kitchen is empty today :('/>
         }
         return (
             <ErrorBoundary>
