@@ -46,7 +46,10 @@ const scssRule = {
 // main config object
 
 module.exports = {
-    entry: [ 'webpack-hot-middleware/client?path=http://localhost:8080/__webpack_hmr&timeout=20000', './src/client/bundle.js' ],
+    entry: [ 
+        'webpack-hot-middleware/client?path=http://localhost:8080/__webpack_hmr&timeout=20000', 
+        './src/client/bundle.js'
+    ],
     output: { path: `${__dirname}'/dist/client'`, publicPath: '/', filename: './dist/client/bundle.js' },
     watch: true,
     devtool: "source-map",

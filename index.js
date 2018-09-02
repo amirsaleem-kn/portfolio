@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var appConfig = require("./src/server/config.js");
 var events = require('events');
 var middlewares = require('./src/server/middlewares/middlewares.js');
+var pool = require('./src/server/mysql/dbConnect.js')(appConfig);
 
 // set up an express application
 var app = express();
@@ -16,7 +17,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(bodyParser.urlencoded({ "limit":"50mb",extended: true }))
-app.use(compression());
+app.use(compression()); // compress payload in every request
 
 app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');
@@ -41,7 +42,38 @@ if(appConfig.environment != 'production') {
 
 app.use("/dist/client", express.static(__dirname+"/dist/client"));
 
-var authenticateUser = middlewares.authenticateUser;
+const { authenticateUser } = middlewares;
+
+//const connection = require('./src/server/mysql/connection.js')();
+
+var connection_ev = new events.EventEmitter();
+connection_ev.on("connection-created", function(data){
+    console.log('A new connection has been created: '+ data);
+});
+
+app.get('/orders', authenticateUser, function(req, res){
+    pool.getConnection(function(err, connection){
+        if(err) {
+            console.log(err);
+            return;
+        }
+        connection.query("SELECT OrderID, Name FROM OrderMaster", function(err, orders){
+            connection.release();
+            if(err) {
+                console.log(err);
+                reject(err);
+            }
+            var data = [];
+            orders.forEach(function(order){
+                data.push({ name:  order['Name'], orderID: order['OrderID']})
+            });
+            res.json({
+                data: data,
+                status: 'success'
+            });
+        });
+    });
+});
 
 app.get('*', authenticateUser,  (req, res) => {
     res.render('index', {
@@ -49,22 +81,6 @@ app.get('*', authenticateUser,  (req, res) => {
         localIP: localIP || null
     });
 });
-
-var connectionPool = require('./src/server/mysql/dbConnect.js')(appConfig);
-
-var connectionCreated = new events.EventEmitter();
-connectionCreated.on("connection-created", function(data){
-    console.log('A new connection has been created: '+ data);
-});
-
-connectionPool.getConnection(function(err, connection){
-    if(err) {
-        console.log(err);
-        return;
-    }
-    connectionCreated.emit("connection-created", connection.threadId);
-    connection.destroy();
-})
 
 var port = appConfig.port || process.env.port || 8080;
 

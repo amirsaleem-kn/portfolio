@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom';
 import Loadable from 'react-loadable';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-const Loader = () => <div>Loading...</div>;
+const Loader = () => {
+    return(<div className = 'L-tewelve S-tewelve clearfix'>
+        <div className = 'material-card text text--sub'>Loading orders component</div>
+    </div>)
+};
 
 const Orders = Loadable({
     loader: () => import('./Orders/Order'),
